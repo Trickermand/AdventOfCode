@@ -6,7 +6,7 @@ namespace Year2021
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("===== Running Advent of Code =====");
+            Console.WriteLine("===== Running Advent of Code 2021 =====");
 
             Day1.Part1();
             Day1.Part2();
