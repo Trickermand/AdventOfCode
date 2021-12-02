@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace Year2021
 {
@@ -20,7 +21,7 @@ namespace Year2021
 
         public static void Part1()
         {
-            List<string> inputs = Utilities.ReadInput(Day);
+            List<string> inputs = IO.ReadInput(Day);
 
             int horizontalPos = 0;
             int depth = 0;
@@ -53,7 +54,7 @@ namespace Year2021
 
         public static void Part2()
         {
-            List<string> inputs = Utilities.ReadInput(Day);
+            List<string> inputs = IO.ReadInput(Day);
 
             int horizontalPos = 0;
             int depth = 0;

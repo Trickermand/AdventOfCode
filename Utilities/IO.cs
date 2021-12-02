@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Year2021
+namespace Utilities
 {
-    public static class Utilities
+    public static class IO
     {
         public static List<string> ReadInput(string day)
         {
