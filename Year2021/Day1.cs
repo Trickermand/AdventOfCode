@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,7 +12,7 @@ namespace Year2021
     {
         public static void Part1()
         {
-            List<string> inputs = Utilities.ReadInput("Day1");
+            List<string> inputs = Utilities.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
 
             int depthIncreases = 0;
             int previousDepth = int.Parse(inputs[0]);
@@ -31,7 +32,7 @@ namespace Year2021
 
         public static void Part2()
         {
-            List<string> inputs = Utilities.ReadInput("Day1");
+            List<string> inputs = Utilities.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
 
             int depthIncreases = 0;
             int previousDepth = int.Parse(inputs[0] + int.Parse(inputs[1]) + int.Parse(inputs[2]));

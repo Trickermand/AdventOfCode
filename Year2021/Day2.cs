@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace Year2021
     {
         public static void Part1()
         {
-            List<string> inputs = Utilities.ReadInput("Day2");
+            List<string> inputs = Utilities.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
 
             int horizontalPos = 0;
             int depth = 0;
@@ -50,7 +51,7 @@ namespace Year2021
 
         public static void Part2()
         {
-            List<string> inputs = Utilities.ReadInput("Day2");
+            List<string> inputs = Utilities.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
 
             int horizontalPos = 0;
             int depth = 0;
