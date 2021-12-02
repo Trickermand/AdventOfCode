@@ -9,25 +9,9 @@ namespace Year2021
 {
     public static class Day1
     {
-        private static List<string> ReadInput(string day)
-        {
-            string path = Path.Combine(Environment.CurrentDirectory, $"..\\..\\..\\Inputs\\{day}.txt");
-            List<string> result = new();
-
-            using (StreamReader reader = new(path))
-            {
-                while (!reader.EndOfStream)
-                {
-                    result.Add(reader.ReadLine());
-                }
-            }
-
-            return result;
-        }
-
         public static void Part1()
         {
-            List<string> inputs = ReadInput("Day1");
+            List<string> inputs = Utilities.ReadInput("Day1");
 
             int depthIncreases = 0;
             int previousDepth = int.Parse(inputs[0]);
@@ -47,7 +31,7 @@ namespace Year2021
 
         public static void Part2()
         {
-            List<string> inputs = ReadInput("Day1");
+            List<string> inputs = Utilities.ReadInput("Day1");
 
             int depthIncreases = 0;
             int previousDepth = int.Parse(inputs[0] + int.Parse(inputs[1]) + int.Parse(inputs[2]));
