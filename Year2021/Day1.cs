@@ -10,9 +10,11 @@ namespace Year2021
 {
     public static class Day1
     {
+        public static string Day = MethodBase.GetCurrentMethod().DeclaringType.Name;
+
         public static void Part1()
         {
-            List<string> inputs = Utilities.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            List<string> inputs = Utilities.ReadInput(Day);
 
             int depthIncreases = 0;
             int previousDepth = int.Parse(inputs[0]);
@@ -27,12 +29,12 @@ namespace Year2021
                 previousDepth = int.Parse(inputs[i]);
             }
 
-            Console.WriteLine($"Day1 part 1 answer: {depthIncreases}");
+            Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {depthIncreases}");
         }
 
         public static void Part2()
         {
-            List<string> inputs = Utilities.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            List<string> inputs = Utilities.ReadInput(Day);
 
             int depthIncreases = 0;
             int previousDepth = int.Parse(inputs[0] + int.Parse(inputs[1]) + int.Parse(inputs[2]));
@@ -47,7 +49,7 @@ namespace Year2021
                 previousDepth = int.Parse(inputs[i]) + int.Parse(inputs[i + 1]) + int.Parse(inputs[i + 2]);
             }
 
-            Console.WriteLine($"Day1 part 2 answer: {depthIncreases}");
+            Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {depthIncreases}");
         }
     }
 }

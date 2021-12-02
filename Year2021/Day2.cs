@@ -16,9 +16,11 @@ namespace Year2021
 
     public static class Day2
     {
+        public static string Day = MethodBase.GetCurrentMethod().DeclaringType.Name;
+
         public static void Part1()
         {
-            List<string> inputs = Utilities.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            List<string> inputs = Utilities.ReadInput(Day);
 
             int horizontalPos = 0;
             int depth = 0;
@@ -45,13 +47,13 @@ namespace Year2021
                 }
             }
 
-            Console.WriteLine($"Day2 part 1 answer: {horizontalPos * depth}");
+            Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {horizontalPos * depth}");
         }
 
 
         public static void Part2()
         {
-            List<string> inputs = Utilities.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            List<string> inputs = Utilities.ReadInput(Day);
 
             int horizontalPos = 0;
             int depth = 0;
@@ -80,7 +82,7 @@ namespace Year2021
                 }
             }
 
-            Console.WriteLine($"Day2 part 2 answer: {horizontalPos * depth}");
+            Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {horizontalPos * depth}");
         }
     }
 }
