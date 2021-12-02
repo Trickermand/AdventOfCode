@@ -21,5 +21,18 @@ namespace Utilities
 
             return result;
         }
+
+        public static List<int> ConvertStringListToIntList(List<string> input)
+        {
+            List<int> result = new(input.Count);
+
+            foreach (var item in input)
+            {
+                result.Add(int.Parse(item));
+            }
+
+            return result;
+        }
     }
+
 }
