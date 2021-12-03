@@ -64,7 +64,37 @@ namespace Year2021
         {
             List<string> inputs = IO.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
 
+            int ones = 0;
+            int zeroes = 0;
+            List<string> options = new();
+            List<bool> gamma = new();
+            List<bool> epsilon = new();
 
+
+            //Scrapped
+            for (int i = 0; i < inputs[0].Length; i++)
+            {
+                options = inputs;
+                for (int j = 0; j < options.Count; j++)
+                {
+                    if (inputs[j][i] == '1')
+                        ones++;
+                    else
+                        zeroes++;
+                }
+
+                if (ones >= zeroes)
+                {
+                    options = options.Where(x => x.Substring(i, 1) == "1").ToList();
+                }
+                else
+                {
+                    options = options.Where(x => x.Substring(i, 1) == "0").ToList();
+                }
+
+                ones = 0;
+                zeroes = 0;
+            }
 
             Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: ");
         }
