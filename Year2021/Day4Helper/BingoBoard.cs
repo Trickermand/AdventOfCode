@@ -9,7 +9,15 @@ namespace Year2021.Day4Helper
     public class BingoBoard
     {
         public BingoCell[][] Board { get; set; }
-        public bool IsBingo{ get; private set; }
+        public bool IsBingo { get; private set; }
+        public int winningNumberIndex { get; set; } = -1;
+        public int winningNumber { get; set; } = -1;
+
+        public BingoBoard()
+        {
+
+        }
+
         public BingoBoard(List<string> inputBoard)
         {
             BingoCell[][] tmp = new BingoCell[5][];
