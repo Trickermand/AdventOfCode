@@ -17,8 +17,14 @@ namespace Year2021
 
             List<int> bingoNumbers = IO.ConvertStringListToIntList(inputs[0].Split(',').ToList());
             List<BingoBoard> boards = GetBingoBoards(inputs, 2);
-            
 
+            foreach (var number in bingoNumbers)
+            {
+                foreach (var board in boards)
+                {
+
+                }
+            }
 
             Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: ");
         }

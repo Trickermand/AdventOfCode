@@ -9,6 +9,7 @@ namespace Year2021.Day4Helper
     public class BingoBoard
     {
         public BingoCell[][] Board { get; set; }
+        public bool IsBingo{ get; private set; }
         public BingoBoard(List<string> inputBoard)
         {
             BingoCell[][] tmp = new BingoCell[5][];
@@ -28,9 +29,48 @@ namespace Year2021.Day4Helper
             Board = tmp;
         }
 
-        public void SetCell()
+        public void SetCell(int num)
         {
-            throw new NotImplementedException();
+            for (int i = 0; i < Board.Length; i++)
+            {
+                for (int j = 0; j < Board[i].Length; j++)
+                {
+                    if (Board[i][j].Number == num)
+                    {
+                        Board[i][j].IsHit = true;
+                        IsBingo = CheckIfBingo(i, j);
+                    }
+                }
+            }
+        }
+
+        private bool CheckIfBingo(int columnNum, int rowNum)
+        {
+            return CheckIfColumnBingo(columnNum) || CheckIfRowBingo(rowNum);
+        }
+
+        private bool CheckIfColumnBingo(int colNum)
+        {
+            for (int i = 0; i < Board[colNum].Length; i++)
+            {
+                if (!Board[colNum][i].IsHit)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private bool CheckIfRowBingo(int rowNum)
+        {
+            for (int i = 0; i < Board.Length; i++)
+            {
+                if (!Board[i][rowNum].IsHit)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
     }
