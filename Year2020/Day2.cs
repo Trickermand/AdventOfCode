@@ -8,7 +8,7 @@ namespace Year2020
 {
     public static class Day2
     {
-        public static string Day = MethodBase.GetCurrentMethod().DeclaringType.Name;
+        private static readonly string Day = MethodBase.GetCurrentMethod().DeclaringType.Name;
 
         public static void Part1()
         {

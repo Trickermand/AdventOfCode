@@ -4,18 +4,14 @@ namespace Year2021
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("===== Running Advent of Code 2021 =====");
 
-            Day1.Part1();
-            Day1.Part2();
-            Day2.Part1();
-            Day2.Part2();
-            Day3.Part1();
-            Day3.Part2();
-            Day4.Part1();
-            Day4.Part2();
+            Day1.All();
+            Day2.All();
+            Day3.All();
+            Day4.All();
 
             Console.WriteLine("Complete ...");
         }

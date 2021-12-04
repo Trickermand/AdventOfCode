@@ -4,7 +4,7 @@ namespace Year2020
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("===== Running Advent of Code 2021 =====");
 

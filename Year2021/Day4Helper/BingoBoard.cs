@@ -10,8 +10,8 @@ namespace Year2021.Day4Helper
     {
         public BingoCell[][] Board { get; set; }
         public bool IsBingo { get; private set; }
-        public int winningNumberIndex { get; set; } = -1;
-        public int winningNumber { get; set; } = -1;
+        public int WinningNumberIndex { get; set; } = -1;
+        public int WinningNumber { get; set; } = -1;
 
         public BingoBoard()
         {

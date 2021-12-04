@@ -9,7 +9,13 @@ namespace Year2021
 {
     public static class Day4
     {
-        public static string Day = MethodBase.GetCurrentMethod().DeclaringType.Name;
+        private static readonly string Day = MethodBase.GetCurrentMethod().DeclaringType.Name;
+
+        public static void All()
+        {
+            Part1();
+            Part2();
+        }
 
         public static void Part1()
         {
@@ -17,7 +23,7 @@ namespace Year2021
 
             List<int> bingoNumbers = IO.ConvertStringListToIntList(inputs[0].Split(',').ToList());
             List<BingoBoard> boards = GetBingoBoards(inputs, 2);
-            BingoBoard winningBingoBoard = new BingoBoard();
+            BingoBoard winningBingoBoard = new();
 
             foreach (var number in bingoNumbers)
             {
@@ -27,7 +33,7 @@ namespace Year2021
                     if (board.IsBingo)
                     {
                         winningBingoBoard = board;
-                        winningBingoBoard.winningNumber = number;
+                        winningBingoBoard.WinningNumber = number;
                         goto End;
                     }
                 }
@@ -45,7 +51,7 @@ namespace Year2021
 
             List<int> bingoNumbers = IO.ConvertStringListToIntList(inputs[0].Split(',').ToList());
             List<BingoBoard> boards = GetBingoBoards(inputs, 2);
-            List<BingoBoard> winningBoards = new List<BingoBoard>();
+            List<BingoBoard> winningBoards = new();
             int index = 0;
             int wonBoards = 0;
 
@@ -54,10 +60,10 @@ namespace Year2021
                 foreach (var board in boards)
                 {
                     board.SetCell(number);
-                    if (board.winningNumberIndex == -1 && board.IsBingo)
+                    if (board.WinningNumberIndex == -1 && board.IsBingo)
                     {
-                        board.winningNumberIndex = index;
-                        board.winningNumber = number;
+                        board.WinningNumberIndex = index;
+                        board.WinningNumber = number;
                         winningBoards.Add(board);
                         wonBoards++;
                         if (wonBoards == 99)
@@ -67,7 +73,7 @@ namespace Year2021
                 index++;
             }
             End:
-            BingoBoard winningBoard = winningBoards.OrderByDescending(x => x.winningNumberIndex).First();
+            BingoBoard winningBoard = winningBoards.OrderByDescending(x => x.WinningNumberIndex).First();
 
             int result = CalculateBingoResult(winningBoard);
 
@@ -85,19 +91,19 @@ namespace Year2021
                         unhitNumbers += item.Number;
                 }
             }
-            return unhitNumbers * board.winningNumber;
+            return unhitNumbers * board.WinningNumber;
         }
 
         private static List<BingoBoard> GetBingoBoards(List<string> inputs, int startIndex)
         {
-            List<BingoBoard> boards = new List<BingoBoard>();
-            List<string> currentBoardString = new List<string>();
+            List<BingoBoard> boards = new();
+            List<string> currentBoardString = new();
 
             for (int i = startIndex; i < inputs.Count; i++)
             {
                 if (inputs[i] == "")
                 {
-                    BingoBoard currentBoard = new BingoBoard(currentBoardString);
+                    BingoBoard currentBoard = new(currentBoardString);
                     boards.Add(currentBoard);
                     currentBoardString.Clear();
                     continue;
