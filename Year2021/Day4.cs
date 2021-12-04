@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Utilities;
+using Year2021.Day4Helper;
 
 namespace Year2021
 {
@@ -13,7 +15,22 @@ namespace Year2021
         {
             List<string> inputs = IO.ReadInput(Day);
 
+            List<int> bingoNumbers = IO.ConvertStringListToIntList(inputs[0].Split(',').ToList());
 
+            List<BingoBoard> boards = new List<BingoBoard>();
+            List<string> currentBoardString = new List<string>();
+
+            for (int i = 2; i < inputs.Count; i++)
+            {
+                if (inputs[i] == "")
+                {
+                    BingoBoard currentBoard = new BingoBoard(currentBoardString);
+                    boards.Add(currentBoard);
+                    currentBoardString.Clear();
+                    continue;
+                }
+                currentBoardString.Add(inputs[i]);
+            }
 
             Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: ");
         }

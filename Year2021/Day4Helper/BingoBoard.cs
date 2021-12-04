@@ -15,12 +15,12 @@ namespace Year2021.Day4Helper
 
             for (int i = 0; i < inputBoard.Count; i++)
             {
-                List<string> inputLine = inputBoard[i].Split(' ').Where(x => x != " ").ToList();
+                List<string> inputLine = inputBoard[i].Split(' ').Where(x => x != "").ToList();
                 tmp[i] = new BingoCell[5];
 
                 for (int j = 0; j < inputLine.Count; j++)
                 {
-                    int num = int.Parse(inputLine[i]);
+                    int num = int.Parse(inputLine[j]);
                     tmp[i][j] = new BingoCell(num);
                 }
             }
