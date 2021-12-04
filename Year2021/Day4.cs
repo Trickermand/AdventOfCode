@@ -16,21 +16,9 @@ namespace Year2021
             List<string> inputs = IO.ReadInput(Day);
 
             List<int> bingoNumbers = IO.ConvertStringListToIntList(inputs[0].Split(',').ToList());
+            List<BingoBoard> boards = GetBingoBoards(inputs, 2);
+            
 
-            List<BingoBoard> boards = new List<BingoBoard>();
-            List<string> currentBoardString = new List<string>();
-
-            for (int i = 2; i < inputs.Count; i++)
-            {
-                if (inputs[i] == "")
-                {
-                    BingoBoard currentBoard = new BingoBoard(currentBoardString);
-                    boards.Add(currentBoard);
-                    currentBoardString.Clear();
-                    continue;
-                }
-                currentBoardString.Add(inputs[i]);
-            }
 
             Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: ");
         }
@@ -42,6 +30,25 @@ namespace Year2021
 
 
             Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: ");
+        }
+
+        private static List<BingoBoard> GetBingoBoards(List<string> inputs, int startIndex)
+        {
+            List<BingoBoard> boards = new List<BingoBoard>();
+            List<string> currentBoardString = new List<string>();
+
+            for (int i = startIndex; i < inputs.Count; i++)
+            {
+                if (inputs[i] == "")
+                {
+                    BingoBoard currentBoard = new BingoBoard(currentBoardString);
+                    boards.Add(currentBoard);
+                    currentBoardString.Clear();
+                    continue;
+                }
+                currentBoardString.Add(inputs[i]);
+            }
+            return boards;
         }
     }
 }
