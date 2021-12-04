@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using Utilities;
@@ -64,39 +65,54 @@ namespace Year2021
         {
             List<string> inputs = IO.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
 
+            string oxygenRating = FindRating(inputs, true);
+            string scrubRating = FindRating(inputs, false);
+
+            int oxygenRatingDecimal = Convert.ToInt32(oxygenRating, 2);
+            int scrubRatingDecimal = Convert.ToInt32(scrubRating, 2);
+            int result = oxygenRatingDecimal * scrubRatingDecimal;
+
+            Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {result}");
+        }
+
+        private static string FindRating(List<string> inputs, bool pickMostCommon)
+        {
             int ones = 0;
             int zeroes = 0;
             List<string> options = new();
-            List<bool> gamma = new();
-            List<bool> epsilon = new();
+            options = inputs;
+            int bitIndex = 0;
 
-
-            //Scrapped
-            for (int i = 0; i < inputs[0].Length; i++)
+            while (options.Count > 1)
             {
-                options = inputs;
                 for (int j = 0; j < options.Count; j++)
                 {
-                    if (inputs[j][i] == '1')
+                    if (options[j][bitIndex] == '1')
                         ones++;
                     else
                         zeroes++;
                 }
 
-                if (ones >= zeroes)
+                if (pickMostCommon)
                 {
-                    options = options.Where(x => x.Substring(i, 1) == "1").ToList();
+                    if (ones >= zeroes)
+                        options = options.Where(x => x.Substring(bitIndex, 1) == "1").ToList();
+                    else
+                        options = options.Where(x => x.Substring(bitIndex, 1) == "0").ToList();
                 }
                 else
                 {
-                    options = options.Where(x => x.Substring(i, 1) == "0").ToList();
+                    if (zeroes <= ones)
+                        options = options.Where(x => x.Substring(bitIndex, 1) == "0").ToList();
+                    else
+                        options = options.Where(x => x.Substring(bitIndex, 1) == "1").ToList();
                 }
 
                 ones = 0;
                 zeroes = 0;
+                bitIndex = bitIndex + 1 > options[0].Length ? 0 : bitIndex + 1;
             }
-
-            Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: ");
+            return options[0];
         }
     }
 }
