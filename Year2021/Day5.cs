@@ -28,7 +28,25 @@ namespace Year2021
             for (int i = 0; i < inputs.Count; i++)
             {
                 (Point start, Point end) line = DecipherInputLine(inputs[i]);
-                area.IncrementCellStraightLines(line.start, line.end);
+                area.IncrementCellLines(line.start, line.end, true);
+            }
+
+            result = EvaluateArea(area);
+
+            Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {result}");
+        }
+
+        public static void Part2()
+        {
+            List<string> inputs = IO.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            int result = 0;
+
+            Area2D area = new Area2D(1000, 1000);
+
+            for (int i = 0; i < inputs.Count; i++)
+            {
+                (Point start, Point end) line = DecipherInputLine(inputs[i]);
+                area.IncrementCellLines(line.start, line.end, false);
             }
 
             result = EvaluateArea(area);
@@ -60,16 +78,6 @@ namespace Year2021
             Point end = new Point(int.Parse(endInput[0]), int.Parse(endInput[1]));
 
             return (start, end);
-        }
-
-        public static void Part2()
-        {
-            List<string> inputs = IO.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
-            int result = 0;
-
-
-
-            Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {result}");
         }
     }
 }

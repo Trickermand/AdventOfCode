@@ -13,7 +13,7 @@ namespace Year2021
             //Day3.All();
             //Day4.All();
 
-            Day5.Part1();
+            Day5.Part2();
 
             Console.WriteLine("Complete ...");
         }
