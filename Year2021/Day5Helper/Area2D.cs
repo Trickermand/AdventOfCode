@@ -27,36 +27,37 @@ namespace Year2021.Day5Helper
                 if (avoidDiagonals)
                     return;
 
-                int lowestX = start.X < end.X ? start.X : end.X;
-                int lowestY = start.Y < end.Y ? start.Y : end.Y;
-                int highestX = start.X > end.X ? start.X : end.X;
-                int highestY = start.Y > end.Y ? start.Y : end.Y;
-                int offset = 0;
+                int count = Math.Abs(start.X - end.X);
+                bool xPositive = start.X <= end.X;
+                bool yPositive = start.Y <= end.Y;
 
-                for (int i = lowestX; i <= highestX; i++)
+                for (int i = 0; i <= count; i++)
                 {
-                    Area[lowestY + offset][lowestX + offset]++;
-                    offset++;
+                    int newX = start.X + (xPositive ? i : i * -1);
+                    int newY = start.Y + (yPositive ? i : i * -1);
+                    Area[newY][newX]++;
                 }
             }
             else if (start.X != end.X)
             {
-                int lowest = start.X < end.X ? start.X : end.X;
-                int highest = start.X > end.X ? start.X : end.X;
+                int count = Math.Abs(start.X - end.X);
+                bool xPositive = start.X <= end.X;
 
-                for (int i = lowest; i <= highest; i++)
+                for (int i = 0; i <= count; i++)
                 {
-                    Area[start.Y][i]++; 
+                    int newX = start.X + (xPositive ? i : i * -1);
+                    Area[start.Y][newX]++; 
                 }
             }
             else
             {
-                int lowest = start.Y < end.Y ? start.Y : end.Y;
-                int highest = start.Y > end.Y ? start.Y : end.Y;
+                int count = Math.Abs(start.Y - end.Y);
+                bool yPositive = start.Y <= end.Y;
 
-                for (int i = lowest; i <= highest; i++)
+                for (int i = 0; i <= count; i++)
                 {
-                    Area[i][start.X]++;
+                    int newY = start.Y + (yPositive ? i : i * -1);
+                    Area[newY][start.X]++;
                 }
             }
         }
