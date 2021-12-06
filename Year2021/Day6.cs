@@ -41,11 +41,12 @@ namespace Year2021
             ulong result = 0;
 
             int daysToRun = 256;
-            ulong[] groups = InitFish(inputs[0].Split(','));
+            ulong[] groups = InitializeFishGroups(inputs[0].Split(','));
             ulong[] newGroups = new ulong[9];
 
             for (int i = 0; i < daysToRun; i++)
             {
+                // Do normal fish aging
                 newGroups[0] = groups[1];
                 newGroups[1] = groups[2];
                 newGroups[2] = groups[3];
@@ -55,25 +56,20 @@ namespace Year2021
                 newGroups[6] = groups[7];
                 newGroups[7] = groups[8];
 
+                // Handle birth ready fish
                 newGroups[6] += groups[0];
                 newGroups[8] = groups[0];
 
                 newGroups.CopyTo(groups, 0);
-                result = groups[0] +
-                        groups[1] +
-                        groups[2] +
-                        groups[3] +
-                        groups[4] +
-                        groups[5] +
-                        groups[6] +
-                        groups[7] +
-                        groups[8];
             }
+
+            for (int i = 0; i < groups.Length; i++)
+                result += groups[i];
 
             Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {result}");
         }
 
-        private static ulong[] InitFish(string[] input)
+        private static ulong[] InitializeFishGroups(string[] input)
         {
             ulong[] groups = new ulong[9];
             for (int i = 0; i < input.Length; i++)
