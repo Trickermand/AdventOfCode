@@ -38,53 +38,50 @@ namespace Year2021
         public static void Part2()
         {
             List<string> inputs = IO.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
-            int result = 0;
+            ulong result = 0;
 
-            int dayToRun = 256;
+            int daysToRun = 256;
+            ulong[] groups = InitFish(inputs[0].Split(','));
+            ulong[] newGroups = new ulong[9];
 
-            int[] initialFish = InitializeFishArrayOptimized(inputs[0].Split(','));
-            int[] growingFish = initialFish;
-
-            int rollingIndex = 300;
-
-            for (int i = 0; i < dayToRun; i++)
+            for (int i = 0; i < daysToRun; i++)
             {
-                ProgressDayArrayOptimized(ref growingFish, ref rollingIndex);
-            }
+                newGroups[0] = groups[1];
+                newGroups[1] = groups[2];
+                newGroups[2] = groups[3];
+                newGroups[3] = groups[4];
+                newGroups[4] = groups[5];
+                newGroups[5] = groups[6];
+                newGroups[6] = groups[7];
+                newGroups[7] = groups[8];
 
+                newGroups[6] += groups[0];
+                newGroups[8] = groups[0];
+
+                newGroups.CopyTo(groups, 0);
+                result = groups[0] +
+                        groups[1] +
+                        groups[2] +
+                        groups[3] +
+                        groups[4] +
+                        groups[5] +
+                        groups[6] +
+                        groups[7] +
+                        groups[8];
+            }
 
             Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {result}");
         }
 
-        private static void ProgressDayArrayOptimized(ref int[] allFish, ref int rollingIndex)
+        private static ulong[] InitFish(string[] input)
         {
-            int initialLength = rollingIndex;
-            for (int i = 0; i < initialLength; i++)
+            ulong[] groups = new ulong[9];
+            for (int i = 0; i < input.Length; i++)
             {
-                if (allFish[i] == 0)
-                {
-                    allFish[i + 1] = 8;
-                    allFish[i] = 6;
-                    i++;
-                }
-                else
-                    allFish[i]--;
+                int tmp = int.Parse(input[i]);
+                groups[tmp]++;
             }
-        }
-
-        private static void ProgressDayOptimized(ref List<int> allFish)
-        {
-            int initialLength = allFish.Count;
-            for (int i = 0; i < initialLength; i++)
-            {
-                if (allFish[i] == 0)
-                    allFish.Add(8);
-
-                if (allFish[i] == 0)
-                    allFish[i] = 6;
-                else
-                    allFish[i]--;
-            }
+            return groups;
         }
 
         private static List<Fish> ProgressDay(List<Fish> allFish)
@@ -95,30 +92,10 @@ namespace Year2021
                 if (fish.BirthCounter == 0)
                     allFishAndNewborns.Add(new Fish(8));
 
-                fish.ProgressBithCounter();
+                fish.ProgressBirthCounter();
                 allFishAndNewborns.Add(fish);
             }
             return allFishAndNewborns;
-        }
-
-        private static int[] InitializeFishArrayOptimized(string[] initialBirthCounters)
-        {
-            int[] allFish = new int[4000000000];
-            for (int i = 0; i < initialBirthCounters.Length; i++)
-            {
-                allFish[i] = int.Parse(initialBirthCounters[i]);
-            }
-            return allFish;
-        }
-
-        private static List<int> InitializeFishOptimized(string[] initialBirthCounters)
-        {
-            List<int> allFish = new();
-            for (int i = 0; i < initialBirthCounters.Length; i++)
-            {
-                allFish.Add(int.Parse(initialBirthCounters[i]));
-            }
-            return allFish;
         }
 
         private static List<Fish> InitializeFish(string[] initialBirthCounters)

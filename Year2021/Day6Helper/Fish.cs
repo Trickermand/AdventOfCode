@@ -15,7 +15,7 @@ namespace Year2021.Day6Helper
             BirthCounter = birthCounter;
         }
 
-        public void ProgressBithCounter()
+        public void ProgressBirthCounter()
         {
             if (BirthCounter == 0)
                 BirthCounter = 6;
