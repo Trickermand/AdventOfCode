@@ -40,8 +40,10 @@ namespace Year2020
 
         public static void Part2()
         {
-            List<string> inputs = IO.ReadInputAsLines(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            string inputs = IO.ReadAllText(Day);
             int result = 0;
+
+            List<string> passportStrings = inputs.Split("\r\n\r\n").ToList();
 
 
 
