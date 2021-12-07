@@ -23,6 +23,12 @@ namespace Utilities
             return result;
         }
 
+        public static string ReadAllText(string day)
+        {
+            string path = Path.Combine(Environment.CurrentDirectory, $"..\\..\\..\\Inputs\\{day}.txt");
+            return File.ReadAllText(path);
+        }
+
         public static List<int> ConvertStringListToIntList(List<string> input)
         {
             List<int> result = new(input.Count);

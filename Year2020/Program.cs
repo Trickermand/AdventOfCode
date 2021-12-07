@@ -14,6 +14,7 @@ namespace Year2020
             Day2.Part2();
             Day3.Part1();
             Day3.Part2();
+            Day4.Part1();
 
             Console.WriteLine("Complete ...");
         }
