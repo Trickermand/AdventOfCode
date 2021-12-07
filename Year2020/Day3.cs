@@ -18,7 +18,7 @@ namespace Year2020
 
         public static void Part1()
         {
-            List<string> inputs = IO.ReadInput(Day);
+            List<string> inputs = IO.ReadInputAsLines(Day);
             Path[][] area = GetAreaFromInput(inputs);
             int hits = GoDownSlope(area, new Point(1, 3));
 
@@ -65,7 +65,7 @@ namespace Year2020
 
         public static void Part2()
         {
-            List<string> inputs = IO.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            List<string> inputs = IO.ReadInputAsLines(MethodBase.GetCurrentMethod().DeclaringType.Name);
             
             Path[][] area = GetAreaFromInput(inputs);
             long hits = 1;

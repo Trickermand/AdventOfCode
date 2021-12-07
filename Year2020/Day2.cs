@@ -12,7 +12,7 @@ namespace Year2020
 
         public static void Part1()
         {
-            List<string> inputs = IO.ReadInput(Day);
+            List<string> inputs = IO.ReadInputAsLines(Day);
 
             int result = 0;
 
@@ -37,7 +37,7 @@ namespace Year2020
 
         public static void Part2()
         {
-            List<string> inputs = IO.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            List<string> inputs = IO.ReadInputAsLines(MethodBase.GetCurrentMethod().DeclaringType.Name);
 
             int result = 0;
 

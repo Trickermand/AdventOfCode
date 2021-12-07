@@ -21,7 +21,7 @@ namespace Year2021
 
         public static void Part1()
         {
-            List<string> inputs = IO.ReadInput(Day);
+            List<string> inputs = IO.ReadInputAsLines(Day);
 
             int depthIncreases = 0;
             int previousDepth = int.Parse(inputs[0]);
@@ -41,7 +41,7 @@ namespace Year2021
 
         public static void Part2()
         {
-            List<string> inputs = IO.ReadInput(Day);
+            List<string> inputs = IO.ReadInputAsLines(Day);
 
             int depthIncreases = 0;
             int previousDepth = int.Parse(inputs[0] + int.Parse(inputs[1]) + int.Parse(inputs[2]));

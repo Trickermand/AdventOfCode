@@ -19,7 +19,7 @@ namespace Year2021
 
         public static void Part1()
         {
-            List<string> inputs = IO.ReadInput(Day);
+            List<string> inputs = IO.ReadInputAsLines(Day);
 
             int ones = 0;
             int zeroes = 0;
@@ -69,7 +69,7 @@ namespace Year2021
 
         public static void Part2()
         {
-            List<string> inputs = IO.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            List<string> inputs = IO.ReadInputAsLines(MethodBase.GetCurrentMethod().DeclaringType.Name);
 
             string oxygenRating = FindRating(inputs, true);
             string scrubRating = FindRating(inputs, false);

@@ -19,7 +19,7 @@ namespace Year2021
 
         public static void Part1()
         {
-            List<string> inputs = IO.ReadInput(Day);
+            List<string> inputs = IO.ReadInputAsLines(Day);
 
             List<int> bingoNumbers = IO.ConvertStringListToIntList(inputs[0].Split(',').ToList());
             List<BingoBoard> boards = GetBingoBoards(inputs, 2);
@@ -47,7 +47,7 @@ namespace Year2021
 
         public static void Part2()
         {
-            List<string> inputs = IO.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            List<string> inputs = IO.ReadInputAsLines(MethodBase.GetCurrentMethod().DeclaringType.Name);
 
             List<int> bingoNumbers = IO.ConvertStringListToIntList(inputs[0].Split(',').ToList());
             List<BingoBoard> boards = GetBingoBoards(inputs, 2);

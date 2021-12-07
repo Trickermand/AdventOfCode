@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 
 namespace Utilities
 {
     public static class IO
     {
-        public static List<string> ReadInput(string day)
+        public static List<string> ReadInputAsLines(string day)
         {
             string path = Path.Combine(Environment.CurrentDirectory, $"..\\..\\..\\Inputs\\{day}.txt");
             List<string> result = new();
@@ -32,6 +33,20 @@ namespace Utilities
             }
 
             return result;
+        }
+
+        public static List<T> ReadInputDelimited<T>(string day, string delimiter) where T : IComparable
+        {
+            string firstLine = ReadInputAsLines(day)[0];
+            string[] inputs = firstLine.Split(delimiter);
+            List<T> ls = new();
+
+            for (int i = 0; i < inputs.Length; i++)
+            {
+                ls.Add((T)Convert.ChangeType(inputs[i], typeof(T)));
+            }
+
+            return ls;
         }
     }
 

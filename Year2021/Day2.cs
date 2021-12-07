@@ -27,7 +27,7 @@ namespace Year2021
 
         public static void Part1()
         {
-            List<string> inputs = IO.ReadInput(Day);
+            List<string> inputs = IO.ReadInputAsLines(Day);
 
             int horizontalPos = 0;
             int depth = 0;
@@ -60,7 +60,7 @@ namespace Year2021
 
         public static void Part2()
         {
-            List<string> inputs = IO.ReadInput(Day);
+            List<string> inputs = IO.ReadInputAsLines(Day);
 
             int horizontalPos = 0;
             int depth = 0;

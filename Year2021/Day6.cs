@@ -18,7 +18,7 @@ namespace Year2021
 
         public static void Part1()
         {
-            List<string> inputs = IO.ReadInput(Day);
+            List<string> inputs = IO.ReadInputAsLines(Day);
             int result = 0;
             int dayToRun = 80;
 
@@ -37,7 +37,7 @@ namespace Year2021
 
         public static void Part2()
         {
-            List<string> inputs = IO.ReadInput(MethodBase.GetCurrentMethod().DeclaringType.Name);
+            List<string> inputs = IO.ReadInputAsLines(MethodBase.GetCurrentMethod().DeclaringType.Name);
             ulong result = 0;
 
             int daysToRun = 256;

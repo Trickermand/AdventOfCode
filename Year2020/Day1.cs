@@ -11,7 +11,7 @@ namespace Year2020
 
         public static void Part1()
         {
-            List<int> inputs = IO.ConvertStringListToIntList(IO.ReadInput(Day));
+            List<int> inputs = IO.ConvertStringListToIntList(IO.ReadInputAsLines(Day));
 
             int result = 0;
 
@@ -29,7 +29,7 @@ namespace Year2020
 
         public static void Part2()
         {
-            List<int> inputs = IO.ConvertStringListToIntList(IO.ReadInput(Day));
+            List<int> inputs = IO.ConvertStringListToIntList(IO.ReadInputAsLines(Day));
 
             int result = 0;
 
