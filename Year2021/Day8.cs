@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using Utilities;
+using Year2021.Day8Helper;
 
 namespace Year2021
 {
@@ -42,7 +43,18 @@ namespace Year2021
             List<string> inputs = IO.ReadInputAsLines(MethodBase.GetCurrentMethod().DeclaringType.Name);
             int result = 0;
 
+            inputs = new()
+            {
+                "acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf"
+            };
 
+
+            foreach (var line in inputs)
+            {
+                string sample = line.Split(" | ")[0];
+                SegmentDisplay sd = new SegmentDisplay(sample.Split(" ").ToList());
+                result += sd.GetValue(line.Split(" | ")[1]);
+            }
 
             Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {result}");
         }
