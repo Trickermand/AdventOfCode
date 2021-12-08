@@ -46,13 +46,6 @@ namespace Year2021.Day8Helper
             Bottom = GetLeastOccurringLetter(possibleEigth, new List<char>() { Top_VeryImportant, TopRight, Middle, BottomLeft, BottomRight, TopLeft });
         }
 
-        public int GetValue(string input)
-        {
-
-
-            return 0;
-        }
-
         private List<string> NewListWithExtraElement(List<string> list, string element)
         {
             string[] newArray = new string[list.Count];
