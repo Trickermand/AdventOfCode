@@ -1,12 +1,12 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using Utilities;
 
 namespace Year2021
 {
-    public static class DayTemplate
+    public static class Day9
     {
         private static readonly string Day = MethodBase.GetCurrentMethod().DeclaringType.Name;
 
