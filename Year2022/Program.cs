@@ -9,6 +9,7 @@ namespace Year2022
             Console.WriteLine("===== Running Advent of Code 2022 =====");
 
             Day1.All();
+            Day2.All();
 
             Console.WriteLine("Complete ...");
         }
