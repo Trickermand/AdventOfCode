@@ -56,34 +56,6 @@ namespace Year2022
             Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {result}");
         }
 
-        private static (int oppnentPoints, int mePoints) CalculateMatchPointsPart2(choice opponent, choice me)
-        {
-            if (opponent == choice.rock)
-            {
-                if (me == choice.rock)
-                    me = choice.scissors;
-                else if (me == choice.paper)
-                    me = choice.rock;
-                else if (me == choice.scissors)
-                    me = choice.paper;
-            }
-            else if (opponent == choice.paper)
-            {
-
-            }
-            else if (opponent == choice.scissors)
-            {
-                if (me == choice.rock)
-                    me = choice.paper;
-                else if (me == choice.paper)
-                    me = choice.scissors;
-                else if (me == choice.scissors)
-                    me = choice.rock;
-            }
-
-            return CalculateMatchPoints(opponent, me);
-        }
-
         private static (int oppnentPoints, int mePoints) CalculateMatchPoints(choice opponent, choice me)
         {
             int opponentPoints = (int)opponent;
@@ -144,6 +116,34 @@ namespace Year2022
                         return choice.none;
                 }
             }
+        }
+
+        private static (int oppnentPoints, int mePoints) CalculateMatchPointsPart2(choice opponent, choice me)
+        {
+            if (opponent == choice.rock)
+            {
+                if (me == choice.rock)
+                    me = choice.scissors;
+                else if (me == choice.paper)
+                    me = choice.rock;
+                else if (me == choice.scissors)
+                    me = choice.paper;
+            }
+            else if (opponent == choice.paper)
+            {
+
+            }
+            else if (opponent == choice.scissors)
+            {
+                if (me == choice.rock)
+                    me = choice.paper;
+                else if (me == choice.paper)
+                    me = choice.scissors;
+                else if (me == choice.scissors)
+                    me = choice.rock;
+            }
+
+            return CalculateMatchPoints(opponent, me);
         }
     }
 }
