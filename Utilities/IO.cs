@@ -14,9 +14,9 @@ namespace Utilities
             output
         }
 
-        public static List<string> ReadInputAsLines(string day)
+        public static List<string> ReadInputAsLines(string day, bool useTestData = false)
         {
-            string path = GetPath(day, "Real");
+            string path = GetPath(day, useTestData ? "Test" : "Real");
             List<string> result = new();
 
             using (StreamReader reader = new(path))
