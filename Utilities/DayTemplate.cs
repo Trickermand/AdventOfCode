@@ -9,7 +9,6 @@ namespace Year2022
     public static class DayTemplate
     {
         private static readonly string Day = MethodBase.GetCurrentMethod().DeclaringType.Name;
-        private static readonly string MethodName = MethodBase.GetCurrentMethod().Name;
 
         public static void All()
         {
@@ -19,6 +18,7 @@ namespace Year2022
 
         public static void Part1()
         {
+            string MethodName = MethodBase.GetCurrentMethod().Name;
             List<string> inputs = IO.ReadInputAsLines(Day);
             int result = 0;
 
@@ -29,6 +29,7 @@ namespace Year2022
 
         public static void Part2()
         {
+            string MethodName = MethodBase.GetCurrentMethod().Name;
             List<string> inputs = IO.ReadInputAsLines(Day);
             int result = 0;
 
