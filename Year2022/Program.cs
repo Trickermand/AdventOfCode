@@ -13,6 +13,7 @@ namespace Year2022
             Day3.All();
             Day4.All();
             Day5.All();
+            Day6.All();
 
             Console.WriteLine("Complete ...");
         }
