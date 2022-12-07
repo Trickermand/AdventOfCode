@@ -9,8 +9,8 @@ namespace Year2022.Day7Helper
     internal class TreeFile
     {
         public string Name { get; set; }
-        public uint Size { get; set; }
-        public TreeFile(string name, uint size)
+        public int Size { get; set; }
+        public TreeFile(string name, int size)
         {
             Name = name;
             Size = size;

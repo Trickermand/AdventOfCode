@@ -10,9 +10,6 @@ namespace Year2022.Day7Helper
     {
         List<TreeFolder> folders = new();
 
-        public TreeFolder GetFolderAtRoot(string root)
-        {
 
-        }
     }
 }

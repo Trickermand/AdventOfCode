@@ -14,7 +14,8 @@ namespace Year2022
         // State Machine variables
         static int instPointer = 0;
         static List<string> memory = new();
-        static string currentRoot = "";
+        static TreeFolder currentFolder;
+        static TreeFolder homeFolder = new("/", null);
 
         public static void All()
         {
@@ -28,14 +29,18 @@ namespace Year2022
             memory = IO.ReadInputAsLines(Day, true);
             int result = 0;
 
+            int lastInstPointer = 0;
             while (instPointer < memory.Count)
             {
+                lastInstPointer = instPointer;
                 if (memory[instPointer].StartsWith('$'))
                     ExecuteNextCommand();
 
-
-                instPointer++;
+                if (lastInstPointer == instPointer)
+                    throw new Exception("Program ran into an infinite loop.");
             }
+
+
 
             Console.WriteLine($"{Day} {MethodName} answer: {result}");
         }
@@ -47,7 +52,7 @@ namespace Year2022
                 throw new Exception("ExecuteNextCommand called but next line was not an instruction declaration.");
 
             string command = memory[instPointer][2..];
-            if (command == "cd")
+            if (command.StartsWith("cd"))
             {
                 string destination = command.Split(' ')[1];
                 if (destination == "/")
@@ -56,29 +61,52 @@ namespace Year2022
                     GoParentFolder();
                 else
                     GoSubFolder(destination);
+
+                instPointer++;
             }
             else if (command == "ls")
-            {
+                InterpretResponse();
+        }
 
+        private static void InterpretResponse()
+        {
+            instPointer++;
+            string line = memory[instPointer];
+            while (!line.StartsWith("$"))
+            {
+                if (line.StartsWith("dir"))
+                {
+                    var folderInfo = line.Split(" ");
+                    string name = folderInfo[1];
+                    currentFolder.AddSubFolder(name);
+                }
+                else
+                {
+                    var fileInfo = line.Split(" ");
+                    int size = int.Parse(fileInfo[0]);
+                    string name = fileInfo[1];
+                    currentFolder.AddFile(name, size);
+                }
+                instPointer++;
+                if (instPointer >= memory.Count)
+                    break;
+                line = memory[instPointer];
             }
         }
 
         private static void GoHome()
         {
-            throw new NotImplementedException();
-            currentRoot = "/";
+            currentFolder = homeFolder;
         }
 
         private static void GoParentFolder()
         {
-            throw new NotImplementedException();
-            currentRoot = currentRoot[0..currentRoot.LastIndexOf("/")];
+            currentFolder = currentFolder.GetParentFolder();
         }
 
         private static void GoSubFolder(string name)
         {
-            TreeFolder folder = new(name);
-
+            currentFolder = currentFolder.GetSubFolder(name);
         }
 
         public static void Part2()
