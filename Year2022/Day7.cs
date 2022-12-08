@@ -26,9 +26,26 @@ namespace Year2022
         public static void Part1()
         {
             string MethodName = MethodBase.GetCurrentMethod().Name;
-            memory = IO.ReadInputAsLines(Day, true);
+            memory = IO.ReadInputAsLines(Day);
             int result = 0;
 
+            InitializeFolders();
+
+            List<TreeFolder> allFolders = new();
+            homeFolder.GetFolderAndSubFolders(allFolders);
+
+            foreach (var folder in allFolders)
+            {
+                int size = folder.TotalSize;
+                if (size <= 100000)
+                    result += size;
+            }
+
+            Console.WriteLine($"{Day} {MethodName} answer: {result}");
+        }
+
+        private static void InitializeFolders()
+        {
             int lastInstPointer = 0;
             while (instPointer < memory.Count)
             {
@@ -39,12 +56,7 @@ namespace Year2022
                 if (lastInstPointer == instPointer)
                     throw new Exception("Program ran into an infinite loop.");
             }
-
-
-
-            Console.WriteLine($"{Day} {MethodName} answer: {result}");
         }
-
 
         private static void ExecuteNextCommand()
         {
@@ -115,7 +127,26 @@ namespace Year2022
             List<string> inputs = IO.ReadInputAsLines(Day, true);
             int result = 0;
 
+            InitializeFolders();
 
+            int totalSpace = 70000000;
+            int spaceUsed = homeFolder.GetTotalSize();
+            int freeSpace = totalSpace - spaceUsed;
+            int spaceNeeded = 30000000;
+            int spaceMissing = spaceNeeded - freeSpace;
+
+            List<TreeFolder> allFolders = new();
+            homeFolder.GetFolderAndSubFolders(allFolders);
+
+            List<TreeFolder> folderCandidates = new();
+            foreach (var folder in allFolders)
+            {
+                int size = folder.TotalSize;
+                if (size > spaceMissing)
+                    folderCandidates.Add(folder);
+            }
+
+            result = folderCandidates.OrderBy(x => x.TotalSize).ToList()[0].TotalSize;
 
             Console.WriteLine($"{Day} {MethodName} answer: {result}");
         }
