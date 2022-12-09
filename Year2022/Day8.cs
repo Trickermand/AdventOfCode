@@ -22,6 +22,82 @@ namespace Year2022
             List<string> inputs = IO.ReadInputAsLines(Day);
             int result = 0;
 
+            List<List<int>> forest = new();
+            for (int i = 0; i < inputs.Count; i++)
+            {
+                List<int> line = new();
+                for (int j = 0; j < inputs[i].Length; j++)
+                {
+                    line.Add(int.Parse(inputs[i][j].ToString()));
+                }
+                forest.Add(line);
+            }
+
+            for (int i = 0; i < forest.Count; i++)
+            {
+                for (int j = 0; j < forest[i].Count; j++)
+                {
+                    int tree = forest[i][j];
+                    bool pass = false;
+                    bool visible = true;
+                    if (i == 0 || j == 0 || i == forest.Count - 1 || j == forest[i].Count - 1)
+                    {
+                        result++;
+                        continue;
+                    }
+
+                    for (int k = i - 1; k >= 0; k--)
+                    {
+                        if (tree <= forest[k][j])
+                            visible = false;
+                    }
+
+                    if (visible)
+                    {
+                        result++;
+                        continue;
+                    }
+                    visible = true;
+
+                    for (int k = i + 1; k < forest.Count; k++)
+                    {
+                        if (tree <= forest[k][j])
+                            visible = false;
+                    }
+
+                    if (visible)
+                    {
+                        result++;
+                        continue;
+                    }
+                    visible = true;
+
+                    for (int k = j + 1; k < forest[i].Count; k++)
+                    {
+                        if (tree <= forest[k][j])
+                            visible = false;
+                    }
+
+                    if (visible)
+                    {
+                        result++;
+                        continue;
+                    }
+                    visible = true;
+
+                    for (int k = j - 1; k >= 0; k--)
+                    {
+                        if (tree <= forest[k][j])
+                            visible = false;
+                    }
+
+                    if (visible)
+                    {
+                        result++;
+                        continue;
+                    }
+                }
+            }
 
 
             Console.WriteLine($"{Day} {MethodName} answer: {result}");
