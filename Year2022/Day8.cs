@@ -74,7 +74,7 @@ namespace Year2022
 
                     for (int k = j + 1; k < forest[i].Count; k++)
                     {
-                        if (tree <= forest[k][j])
+                        if (tree <= forest[i][k])
                             visible = false;
                     }
 
@@ -87,7 +87,7 @@ namespace Year2022
 
                     for (int k = j - 1; k >= 0; k--)
                     {
-                        if (tree <= forest[k][j])
+                        if (tree <= forest[i][k])
                             visible = false;
                     }
 
