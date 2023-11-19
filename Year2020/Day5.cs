@@ -40,9 +40,6 @@ namespace Year2020
             List<string> lines = IO.ReadInputAsLines(Day);
             int result = 0;
 
-            int row = -1;
-            int column = -1;
-
             List<int> ids = new();
 
             foreach (var line in lines)
