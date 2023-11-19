@@ -1,14 +1,18 @@
 ﻿using System;
-using System.Linq;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 using System.Reflection;
+using System.Text.RegularExpressions;
 using Utilities;
+using Year2020.Day4Helper;
 
 namespace Year2020
 {
     public static class Day4
     {
         private static readonly string Day = MethodBase.GetCurrentMethod().DeclaringType.Name;
+        private static List<string> required = new() { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid" };
 
         public static void All()
         {
@@ -21,8 +25,7 @@ namespace Year2020
             string inputs = IO.ReadAllText(Day);
             int result = 0;
 
-            List<string> passport = inputs.Split("\r\n\r\n").ToList();
-            List<string> required = new List<string>() { "byr", "iyr", "eyr", "hgt", "hcl", "ecl", "pid" };
+            List<string> passport = inputs.Split("\n\n").ToList();
 
             for (int i = 0; i < passport.Count; i++)
             {
@@ -43,9 +46,14 @@ namespace Year2020
             string inputs = IO.ReadAllText(Day);
             int result = 0;
 
-            List<string> passportStrings = inputs.Split("\r\n\r\n").ToList();
+            List<string> passports = inputs.Split("\n\n").ToList();
 
-
+            foreach (var passport in passports)
+            {
+                Passport p = new(passport);
+                if (p.IsValid())
+                    result++;
+            }
 
             Console.WriteLine($"{Day} {MethodBase.GetCurrentMethod().Name} answer: {result}");
         }
