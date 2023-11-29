@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text.RegularExpressions;
 
 namespace Year2020
 {
@@ -6,20 +8,26 @@ namespace Year2020
     {
         static void Main()
         {
-            Console.WriteLine("===== Running Advent of Code 2021 =====");
+            Console.WriteLine("===== Running Advent of Code 2020 =====");
 
-            Day1.Part1();
-            Day1.Part2();
-            Day2.Part1();
-            Day2.Part2();
-            Day3.Part1();
-            Day3.Part2();
-            Day4.Part1();
-            Day4.Part2();
-            Day5.Part1();
-            Day5.Part2();
+            RunAll();
 
             Console.WriteLine("Complete ...");
+        }
+
+        static void RunAll()
+        {
+            string namespaceName = typeof(Program).Namespace;
+            var classes = System.Reflection.Assembly.GetExecutingAssembly().GetTypes().Where(x => x.Namespace == namespaceName && Regex.IsMatch(x.Name, @"Day(\d{1}|\d{2})"));
+
+            foreach (var day in classes)
+            {
+                var parts = day.GetMethods().Where(x => Regex.IsMatch(x.Name, @"Part(\d{1})"));
+                foreach (var part in parts)
+                {
+                    part.Invoke(null, null);
+                }
+            }
         }
     }
 }
