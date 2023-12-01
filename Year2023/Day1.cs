@@ -25,7 +25,6 @@ namespace Year2023
             string MethodName = MethodBase.GetCurrentMethod().Name;
             List<string> inputs = IO.ReadInputAsLines(Day);
 
-
             int result = inputs.Sum(x => int.Parse(Regex.Matches(x, @"(\d)").First().Value + Regex.Matches(x, @"(\d)").Last().Value));
 
             //foreach (var line in inputs)
