@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using System.Reflection;
 using Utilities;
+using System.Diagnostics;
 
 namespace Year2022
 {
@@ -18,24 +19,28 @@ namespace Year2022
 
         public static void Part1()
         {
+            Stopwatch stopwatch = Stopwatch.StartNew();
             string MethodName = MethodBase.GetCurrentMethod().Name;
             List<string> inputs = IO.ReadInputAsLines(Day);
             int result = 0;
 
 
 
-            Console.WriteLine($"{Day} {MethodName} answer: {result}");
+            stopwatch.Stop();
+            Console.WriteLine($"{Day} {MethodName} answer: {result} - in {stopwatch.ElapsedMilliseconds} ms");
         }
 
         public static void Part2()
         {
+            Stopwatch stopwatch = Stopwatch.StartNew();
             string MethodName = MethodBase.GetCurrentMethod().Name;
             List<string> inputs = IO.ReadInputAsLines(Day);
             int result = 0;
 
 
 
-            Console.WriteLine($"{Day} {MethodName} answer: {result}");
+            stopwatch.Stop();
+            Console.WriteLine($"{Day} {MethodName} answer: {result} - in {stopwatch.ElapsedMilliseconds} ms");
         }
     }
 }
