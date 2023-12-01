@@ -24,17 +24,19 @@ namespace Year2023
             Stopwatch stopwatch = Stopwatch.StartNew();
             string MethodName = MethodBase.GetCurrentMethod().Name;
             List<string> inputs = IO.ReadInputAsLines(Day);
-            int result = 0;
 
-            foreach (var line in inputs)
-            {
 
-                var match = Regex.Matches(line, @"(\d)");
-                string s = match.First().Value;
-                s += match.Last().Value;
-                result += int.Parse(s);
+            int result = inputs.Sum(x => int.Parse(Regex.Matches(x, @"(\d)").First().Value + Regex.Matches(x, @"(\d)").Last().Value));
 
-            }
+            //foreach (var line in inputs)
+            //{
+
+            //    var match = Regex.Matches(line, @"(\d)");
+            //    string s = match.First().Value;
+            //    s += match.Last().Value;
+            //    result += int.Parse(s);
+
+            //}
 
             stopwatch.Stop();
             Console.WriteLine($"{Day} {MethodName} answer: {result} - in {stopwatch.ElapsedMilliseconds} ms");
