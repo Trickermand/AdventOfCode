@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using Utilities;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace Year2023
 {
@@ -23,6 +24,8 @@ namespace Year2023
             string MethodName = MethodBase.GetCurrentMethod().Name;
             List<string> lines = IO.ReadInputAsLines(Day);
             int result = 0;
+
+            Dictionary<Point, List<int>> machineParts = new();
 
             for (int i = 0; i < lines.Count; i++)
             {
