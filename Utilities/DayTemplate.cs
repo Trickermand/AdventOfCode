@@ -5,7 +5,7 @@ using System.Reflection;
 using Utilities;
 using System.Diagnostics;
 
-namespace Year2022
+namespace Year2024
 {
     public static class DayTemplate
     {
