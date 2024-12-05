@@ -44,12 +44,11 @@ namespace Year2024
             Console.WriteLine($"{Day} {MethodName} answer: {result} - in {stopwatch.ElapsedMilliseconds} ms");
         }
 
-        private static bool Try(Delegate del)
+        private static bool Try(Func<bool> function)
         {
             try
             {
-                bool b = bool.Parse(del.DynamicInvoke().ToString());
-                return b;
+                return function.Invoke();
             }
             catch
             {
